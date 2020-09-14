@@ -1,0 +1,40 @@
+{
+  "name": "wp-theme-boilerplate",
+  "version": "1.0.0",
+  "description": "WordPress boilerplate theme setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "webpack --env.mode=development --watch",
+    "build": "webpack --env.mode=production"
+  },
+  "keywords": [
+    "wordpress",
+    "boilerplate",
+    "javascript",
+    "css",
+    "webpack"
+  ],
+  "author": "Muhammad Hasnain",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "mini-css-extract-plugin": "^0.11.2",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.1.1",
+    "sass-loader": "^10.0.2",
+    "stylelint": "^13.7.1",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-order": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
