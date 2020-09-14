@@ -6,7 +6,7 @@
         <strong>
           @
         </strong>
-        <a href="https://github.com/hasnaindev">
+        <a href="https://github.com/hasnaindev" target="_blank">
           Muhammad Hasnain
         </a>
       </p>

@@ -4,6 +4,13 @@ This is a simple boilerplate with webpack configuration. It deregisters jQuery b
 
 ## Setup
 
+Before anything else, make sure you have the following extensions installed on your code editor.
+
+1. Prettier
+2. ESLint
+3. Stylelint
+4. EditorConfig
+
 To get this theme up and running, download it or clone it and then run the following command.
 
 ```

@@ -59,7 +59,12 @@
    */
   function enqueue_assets(): void
   {
-    // wp_get_theme()->get('Version');
+    /**
+     * Creates instance of Enqueuer, passes it microtime by
+     * default and converts it's type to string,
+     * use `wp_get_theme()->get('Version')` instead of microtime
+     * before going into production.
+     */
     $enqueuer = new Enqueuer((string)microtime());
 
     /**
