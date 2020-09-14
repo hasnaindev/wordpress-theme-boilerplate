@@ -114,11 +114,16 @@
         wp_enqueue_script($script[0], $script[1], $script[2], $script[3], $script[4]);
     }
 
-    function deregister_scripts(array $scripts): Enqueuer
+    /**
+     * Deregisters the defined scripts.
+     * 
+     * @param array $scripts Names of the scripts that needs to be deregistered.
+     * 
+     * @access public
+     */
+    function deregister_scripts(array $scripts): void
     {
       foreach ($scripts as $script)
        wp_deregister_script($script);
-
-      return $this;
     }
   }
