@@ -96,9 +96,9 @@
     /**
      * Removes WordPress Version, RSD link and wlwmanifest
      */
-    remove_action('wp_head', 'wp_generator'); // remove wordpress version
-    remove_action('wp_head', 'rsd_link'); // remove really simple discovery link
-    remove_action('wp_head', 'wlwmanifest_link'); // remove wlwmanifest.xml (needed to support windows live writer)
+    remove_action('wp_head', 'wp_generator');
+    remove_action('wp_head', 'rsd_link');
+    remove_action('wp_head', 'wlwmanifest_link');
     
     /**
      * Removes WordPress shortlinks.

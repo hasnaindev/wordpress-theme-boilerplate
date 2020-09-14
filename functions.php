@@ -4,23 +4,18 @@
    * This file will serve as a configuration file for the theme,
    * all the functions and classes needed for the theme
    * will be defined inside the `inc` folder and only
-   * includes or called here for initialization.
+   * included or called here for initialization.
    */
+
+  /**
+   * Requiring autoloader.
+   */
+  require_once('inc' . DIRECTORY_SEPARATOR . 'autoloader.php');
 
   /**
    * Requiring theme functions.
    */
   require_once('inc' . DIRECTORY_SEPARATOR . 'theme-functions.php');
-
-  /**
-   * Autoload will include files that exist within Boilerplate
-   * namespace inside `inc` folder.
-   */
-  spl_autoload_register(
-    fn (string $class_name)
-      => strpos($class_name, 'Boilerplate') !== false
-        && require_once('inc' . DIRECTORY_SEPARATOR . $class_name . '.php'),
-  );
 
   /**
    * Add theme supports and nav menus.
