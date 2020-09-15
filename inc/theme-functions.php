@@ -48,7 +48,7 @@
     );
 
     $sidebar->register();
-  }
+  } 
 
   /**
    * Enqueue style and script assets for the theme,

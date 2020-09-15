@@ -7,5 +7,5 @@
   spl_autoload_register(
     fn (string $class_name)
       => strpos($class_name, 'Boilerplate') !== false
-        && require_once($class_name . '.php'),
+        && require_once(str_replace('_', '-', $class_name) . '.php'),
   );
