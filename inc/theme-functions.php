@@ -80,6 +80,7 @@
      */
     $enqueuer
       ->add_style('main', '/assets/styles/style.css')
+      ->add_style('font', 'https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap')
       ->add_script('main', '/assets/scripts/main.js')
       ->enqueue();
   }

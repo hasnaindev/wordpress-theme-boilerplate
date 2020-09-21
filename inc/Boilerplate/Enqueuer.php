@@ -36,7 +36,7 @@
      * Add style asset to the enqueuer.
      * 
      * @param string $handle Slug for the style asset.
-     * @param string $src Source or destination of the style asset, must be relative to `get_template_directory_uri`.
+     * @param string $src Source or destination of the style asset, will be relative to `get_template_directory_uri` if starts with '/'.
      * @param array $deps Dependencies of the respective style asset.
      * @param string $media
      * 
@@ -54,9 +54,12 @@
       if (empty($version))
         $version = $this->theme_version;
 
+      if ($src['0'] == '/')
+        $src = get_template_directory_uri() . $src;
+
       $this->styles[] = array(
         $handle,
-        get_template_directory_uri() . $src,
+        $src,
         $deps,
         $version,
         $media,
@@ -69,7 +72,7 @@
      * Add script asset to the enqueuer.
      * 
      * @param string $handle Slug for the script asset.
-     * @param string $src Source or destination of the script asset, must be relative to `get_template_directory_uri`.
+     * @param string $src Source or destination of the script asset, will be relative to `get_template_directory_uri` if starts with '/'.
      * @param array $deps Dependencies of the respective script asset.
      * @param string $in_footer If script should be loaded in footer.
      * 
@@ -87,9 +90,12 @@
       if (empty($version))
         $version = $this->theme_version;
 
+      if ($src['0'] == '/')
+        $src = get_template_directory_uri() . $src;
+
       $this->scripts[] = array(
         $handle,
-        get_template_directory_uri() . $src,
+        $src,
         $deps,
         $version,
         $in_footer,
