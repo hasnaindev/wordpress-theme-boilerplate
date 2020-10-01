@@ -132,4 +132,43 @@
       foreach ($scripts as $script)
        wp_deregister_script($script);
     }
+
+    /**
+     * Deregisters the defined styles.
+     * 
+     * @param array $styles Names of the styles that needs to be deregistered.
+     * 
+     * @access public
+     */
+    function deregister_styles(array $styles): void
+    {
+      foreach ($styles as $style)
+       wp_deregister_style($style);
+    }
+
+    /**
+     * Dequeues the defined scripts.
+     * 
+     * @param array $scripts Names of the scripts that needs to be dequeued.
+     * 
+     * @access public
+     */
+    function dequeue_scripts(array $scripts): void
+    {
+      foreach ($scripts as $script)
+       wp_dequeue_script($script);
+    }
+
+    /**
+     * Dequeues the defined styles.
+     * 
+     * @param array $styles Names of the styles that needs to be dequeued.
+     * 
+     * @access public
+     */
+    function dequeue_styles(array $styles): void
+    {
+      foreach ($styles as $style)
+       wp_dequeue_style($style);
+    }
   }
