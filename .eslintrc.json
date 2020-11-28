@@ -8,7 +8,7 @@
     "prettier"
   ],
   "plugins": [
-    "prettier",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 12,

@@ -1,14 +1,15 @@
 const path = require('path');
-const MiniExtractCssPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-module.exports = ({ mode }) => ({
-  entry: './src/scripts/index.js',
+module.exports = ({ mode }) => {
+  const isProduction = mode === 'production';
 
-  output: {
+  const entry = './src/scripts/index.js';
+
+  const output = {
     path: path.resolve('assets', 'scripts'),
     filename: '[name].js',
-    chunkFilename: '[id].js',
     publicPath: 'wp-content'
       .concat(
         path
@@ -16,22 +17,20 @@ module.exports = ({ mode }) => ({
           .split('wp-content')
           .pop()
       ),
-  },
+  };
 
-  devtool: mode === 'production'
+  const devtool = isProduction
     ? 'source-map'
-    : 'inline-source-map',
+    : 'inline-source-map';
 
-  module: {
+  const module = {
     rules: [
       { test: /.js$/, exclude: /(node_modules)/, loader: 'babel-loader' },
     ],
-  },
+  };
 
-  plugins: [
-    new MiniExtractCssPlugin({
-      filename: '../styles/[name].css',
-    }),
+  const plugins = [
+    new CleanWebpackPlugin(),
     new BrowserSyncPlugin({
       host: 'localhost',
       proxy: 'http://boilerplate.test/',
@@ -52,9 +51,9 @@ module.exports = ({ mode }) => ({
     }, {
       reload: false,
     }),
-  ],
-  
-  optimization: {
+  ];
+
+  const optimization = {
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
@@ -65,7 +64,14 @@ module.exports = ({ mode }) => ({
         },
       },
     },
-  },
+  };
 
-  mode,
-});
+  return {
+    entry,
+    output,
+    devtool,
+    module,
+    plugins,
+    optimization,
+  };
+};
