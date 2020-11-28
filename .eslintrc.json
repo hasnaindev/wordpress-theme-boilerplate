@@ -3,16 +3,12 @@
     "browser": true,
     "es2021": true
   },
-  "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb-base",
-    "prettier",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "prettier"
   ],
   "plugins": [
     "prettier",
-    "@typescript-eslint"
   ],
   "parserOptions": {
     "ecmaVersion": 12,

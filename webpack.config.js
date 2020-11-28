@@ -3,40 +3,69 @@ const MiniExtractCssPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = ({ mode }) => ({
-  entry: './src/index.ts',
+  entry: './src/scripts/index.js',
 
   output: {
     path: path.resolve('assets', 'scripts'),
-    filename: 'main.js',
+    filename: '[name].js',
+    chunkFilename: '[id].js',
+    publicPath: 'wp-content'
+      .concat(
+        path
+          .join(__dirname, 'assets', 'scripts', '/')
+          .split('wp-content')
+          .pop()
+      ),
   },
 
-  devtool: 'source-map',
+  devtool: mode === 'production'
+    ? 'source-map'
+    : 'inline-source-map',
 
   module: {
     rules: [
-      { test: /.ts$/, exclude: /(node_modules)/, loader: 'ts-loader' },
       { test: /.js$/, exclude: /(node_modules)/, loader: 'babel-loader' },
-      {
-        test: /.s?css$/,
-        use: [MiniExtractCssPlugin.loader, 'css-loader', 'sass-loader'],
-      },
     ],
   },
 
   plugins: [
     new MiniExtractCssPlugin({
-      filename: '../styles/style.css',
+      filename: '../styles/[name].css',
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
-      proxy: 'http://boilerplate.local/',
+      proxy: 'http://boilerplate.test/',
       port: 3000,
+      injectChanges: true,
+      notify: true,
       files: [
-        'assets',
-        '**/*.php',
+        {
+          match: ['**/*.php', 'assets/scripts/*.js', 'assets/styles/*.css'],
+          fn(event, file) {
+            event === 'change'
+            && file.split('.').pop() === 'css'
+              ? this.reload('*.css')
+              : this.reload();
+          },
+        },
       ],
+    }, {
+      reload: false,
     }),
   ],
+  
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
 
   mode,
 });

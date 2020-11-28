@@ -79,8 +79,10 @@
      * inside `init` action hook.
      */
     $enqueuer
-      ->add_style('main', '/assets/styles/style.css')
       ->add_style('font', 'https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap')
+      ->add_style('main', '/assets/styles/main.css')
+      ->add_script('runtime', '/assets/scripts/runtime.js')
+      ->add_script('vendors', '/assets/scripts/vendors.js')
       ->add_script('main', '/assets/scripts/main.js')
       ->enqueue();
   }
