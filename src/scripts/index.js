@@ -1,4 +1,3 @@
-import { getLazyImages } from './lib/view';
-import LazyImages from './lib/classes/Lazy/lazy-images';
+import lazyLoad from './lib/lazy-load';
 
-LazyImages.init(getLazyImages());
+lazyLoad();

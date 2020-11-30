@@ -73,5 +73,6 @@ module.exports = ({ mode }) => {
     module,
     plugins,
     optimization,
+    mode,
   };
 };
